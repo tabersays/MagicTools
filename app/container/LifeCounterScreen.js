@@ -4,16 +4,21 @@
 import React, {Component} from 'react';
 import {Text, View, Dimensions, Platform} from 'react-native';
 import Player from '../container/Player';
+import NavigatorNavigationBarStylesAndroid from 'NavigatorNavigationBarStylesAndroid';
+import NavigatorNavigationBarStylesIOS from 'NavigatorNavigationBarStylesIOS';
 const {width, height} = Dimensions.get('window');
-// Platform.select({
-//             ios: 
-//             android: 
-//         });
+const headerStyleSheet = Platform.select(
+	{
+		ios: NavigatorNavigationBarStylesIOS,
+		android: NavigatorNavigationBarStylesAndroid,
+	}
+);
 const containerStyle = {
     container: {
         flex: 1,
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: headerStyleSheet.General.TotalNavHeight
     },
     player1: {
         flex: 1,

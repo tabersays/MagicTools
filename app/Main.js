@@ -9,22 +9,22 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const routeMapper = {
     LeftButton: () => {
         return (
-            <TouchableHighlight onPress={() => {}} style={{height: 50, width: 50, alignItems: 'center', justifyContent: 'center'}} >
-                <Icon name="md-menu" size={20} color="whitesmoke" />
+            <TouchableHighlight onPress={() => {}} style={{flex: 1, width: 50, alignItems: 'center', justifyContent: 'center'}} >
+                <Icon name="md-menu" size={26} color="whitesmoke" />
             </TouchableHighlight>
         );
     },
     RightButton: () => {
         return (
-            <TouchableHighlight onPress={() => {}} style={{height: 50, width: 50, alignItems: 'center', justifyContent: 'center'}}>
-                <Icon name="md-more" size={20} color="whitesmoke" />
+            <TouchableHighlight onPress={() => {}} style={{flex: 1, width: 50, alignItems: 'center', justifyContent: 'center'}}>
+                <Icon name="md-more" size={26} color="whitesmoke" />
             </TouchableHighlight>
         );
     },
     Title: (route) => {
         return (
             <View style={{flex: 1, justifyContent: 'center'}}>
-                <Text style={{color: 'whitesmoke'}}>{route.title}</Text>
+                <Text style={{color: 'whitesmoke', fontSize: 20}}>{route.title}</Text>
             </View>
         );
     }
