@@ -11,13 +11,10 @@ export default class CircleButton extends Component {
                 borderRadius: 50,
                 width: 50,
                 height: 50,
-                backgroundColor: this.props.color || 'red',
+                backgroundColor: this.props.color || '#FFC0CB',
                 justifyContent: 'center',
                 alignItems: 'center'
             },
-            text: {
-                fontSize: 20
-            }
         };
         return (
             <TouchableOpacity

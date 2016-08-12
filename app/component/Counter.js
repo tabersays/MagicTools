@@ -9,11 +9,12 @@ const componentStyle = {
         borderRadius: 5,
         width: 100,
         height: 100,
-        backgroundColor: 'grey',
+        backgroundColor: '#424242',
         justifyContent: 'center',
         alignItems: 'center'
     },
     text: {
+        color: 'whitesmoke',
         fontSize: 30
     }
 };

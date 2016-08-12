@@ -6,6 +6,7 @@ import {Text, View, Dimensions, Platform} from 'react-native';
 import Player from '../container/Player';
 import NavigatorNavigationBarStylesAndroid from 'NavigatorNavigationBarStylesAndroid';
 import NavigatorNavigationBarStylesIOS from 'NavigatorNavigationBarStylesIOS';
+import Settings from '../component/Settings';
 const {width, height} = Dimensions.get('window');
 const headerStyleSheet = Platform.select(
 	{
@@ -18,13 +19,13 @@ const containerStyle = {
         flex: 1,
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: headerStyleSheet.General.TotalNavHeight
+        marginTop: headerStyleSheet.General.TotalNavHeight,
+        backgroundColor: 'whitesmoke'
     },
     player1: {
         flex: 1,
         justifyContent: 'center',
         backgroundColor: 'whitesmoke',
-        borderTopWidth: 1,
         width,
     },
     player2: {
@@ -33,6 +34,12 @@ const containerStyle = {
         transform: [
             {rotate: '180deg'}
         ],
+        backgroundColor: 'whitesmoke',
+        width
+    },
+    settings: {
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: 'whitesmoke',
         width
     }
@@ -46,6 +53,9 @@ export default class LifeCounterScreen extends Component {
                 <View
                     style={containerStyle.player2}>
                     <Player/>
+                </View>
+                <View style={containerStyle.settings}>
+                    <Settings/>
                 </View>
                 <View
                     style={containerStyle.player1}>
