@@ -1,3 +1,3 @@
-rootProject.name = 'MagicStormTools'
+rootProject.name = 'MagicTools'
 
 include ':app'
