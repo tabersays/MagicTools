@@ -1,11 +1,11 @@
 /**
  * Created by taber on 10/16/2016.
  */
-import React, {Component} from 'react';
-import {TouchableOpacity} from 'react-native';
+import React, {Component, PropTypes} from 'react';
+import {TouchableOpacity, StyleSheet} from 'react-native';
 import constants from '../Constants';
 
-const componentStyles = {
+const componentStyles = StyleSheet.create({
     circle: {
         width: 50,
         height: 50,
@@ -14,7 +14,7 @@ const componentStyles = {
         justifyContent: 'center',
         alignItems: 'center'
     }
-};
+});
 
 export default class CircleButton extends Component {
     render() {
@@ -28,3 +28,9 @@ export default class CircleButton extends Component {
         );
     }
 }
+
+CircleButton.propType = {
+    onPress: PropTypes.func,
+    style: TouchableOpacity.propTypes.style,
+    children: PropTypes.any
+};

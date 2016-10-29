@@ -2,13 +2,13 @@
  * Created by taber on 10/16/2016.
  */
 
-import React, {Component} from 'react';
-import {View} from 'react-native';
+import React, {Component, PropTypes} from 'react';
+import {View, StyleSheet} from 'react-native';
 import SettingsBar from '../components/SettingsBar';
 import Player from '../containers/Player';
 import constants from '../Constants';
 
-const componentStyle = {
+const componentStyle = StyleSheet.create({
     screen: {
         marginTop: 56,
         backgroundColor: constants.white,
@@ -31,7 +31,7 @@ const componentStyle = {
             }
         ]
     }
-};
+});
 
 export default class LifeScreen extends Component {
     constructor() {

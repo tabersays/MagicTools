@@ -5,7 +5,7 @@
  * Created by taber on 10/16/2016.
  */
 
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {View, Text} from 'react-native';
 import CounterChanger from '../components/CounterChanger';
 import constants from '../Constants';
@@ -96,3 +96,11 @@ export default class Player extends Component {
         );
     }
 }
+
+Player.propTypes = {
+    changeLife: PropTypes.func,
+    changePoisonDamage: PropTypes.func,
+    changeCommanderDamage: PropTypes.func,
+    isPoisonShown: PropTypes.bool,
+    isCommanderShown: PropTypes.bool
+};

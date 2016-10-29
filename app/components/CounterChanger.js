@@ -1,12 +1,12 @@
 /**
  * Created by taber on 10/17/2016.
  */
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import React, {Component, PropTypes} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 import CircleButton from '../components/CircleButton';
 import constants from '../Constants';
 
-const componentStyles = {
+const componentStyles = StyleSheet.create({
     component: {
         flex: 1,
         alignItems: 'center',
@@ -24,7 +24,7 @@ const componentStyles = {
     text: {
         fontSize: 18
     }
-};
+});
 export default class CounterChanger extends Component {
     render() {
         const {counter, minusPress, plusPress, color, textColor} = this.props;
@@ -39,3 +39,11 @@ export default class CounterChanger extends Component {
         );
     }
 }
+
+CounterChanger.propTypes = {
+    counter: PropTypes.number,
+    minusPress: PropTypes.func,
+    plusPress: PropTypes.func,
+    color: PropTypes.string,
+    textColor: PropTypes.string
+};
