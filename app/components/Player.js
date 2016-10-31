@@ -7,7 +7,7 @@
 
 import React, {Component, PropTypes} from 'react';
 import {View, Text} from 'react-native';
-import CounterChanger from '../components/CounterChanger';
+import CounterChanger from './CounterChanger';
 import constants from '../Constants';
 
 const componentStyles = {

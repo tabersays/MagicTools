@@ -10,8 +10,9 @@ const componentStyles = StyleSheet.create({
     type: {
         borderWidth: 2,
         borderColor: constants.primary,
-        marginHorizontal: 10,
-        borderRadius: 5
+        marginHorizontal: 15,
+        borderRadius: 5,
+        backgroundColor: constants.white
     }
 });
 export default class CardType extends Component {

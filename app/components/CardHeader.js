@@ -14,16 +14,14 @@ const componentStyles = StyleSheet.create({
         borderColor: constants.primary,
         borderWidth: 2,
         borderRadius: 5,
-        marginHorizontal: 10,
-        marginTop: 10
+        marginHorizontal: 15,
+        marginTop: 15,
+        backgroundColor: constants.white
     },
     name: {
-        borderStyle: 'solid',
         flex: 3
     },
     type: {
-        borderLeftColor: constants.primary,
-        borderLeftWidth: 2,
         flex: 1
     }
 });

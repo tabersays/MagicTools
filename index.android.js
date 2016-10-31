@@ -47,9 +47,9 @@ export default class MagicTools extends Component {
         return (
             <Navigator
                 ref={(ref) => this.navigator = ref}
-                initialRoute={routes.lifeScreen}
+                initialRoute={routes.lifeScreen()}
                 renderScene={(route) => {
-                    return (<route.component/>);
+                    return (<route.component {...route.props} navigator={this.navigator}/>);
                 }}
                 navigationBar={
                     <Navigator.NavigationBar
@@ -59,7 +59,7 @@ export default class MagicTools extends Component {
                                     return (
                                         <TouchableOpacity style={componentStyles.navWrapper}
                                             onPress={() => {
-                                                navigator.push(routes.searchScreen);
+                                                navigator.push(routes.searchScreen());
                                             }}>
                                             <Icon name="md-search" style={componentStyles.iconButton}/>
                                         </TouchableOpacity>

@@ -13,23 +13,18 @@ const componentStyles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 5,
     },
-    placeholder: {
-        flex: 1
-    },
     imageContainer: {
         flexDirection: 'row',
-        //padding: 5,
         height: 200,
-        marginHorizontal: 10
+        marginHorizontal: 15,
+        backgroundColor: constants.white
     }
 });
 export default class CardImagePlaceholder extends Component {
     render() {
         return (
             <View style={componentStyles.imageContainer}>
-                <View style={componentStyles.image}>
-                    <Text>Image</Text>
-                </View>
+                <View style={componentStyles.image}/>
             </View>
         )
     }

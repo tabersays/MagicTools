@@ -5,7 +5,7 @@
 import React, {Component, PropTypes} from 'react';
 import {View, StyleSheet} from 'react-native';
 import SettingsBar from '../components/SettingsBar';
-import Player from '../containers/Player';
+import Player from '../components/Player';
 import constants from '../Constants';
 
 const componentStyle = StyleSheet.create({
