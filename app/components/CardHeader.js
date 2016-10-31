@@ -5,6 +5,7 @@
 import React, {Component, PropTypes} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import constants from '../Constants';
+import autobind from 'autobind-decorator';
 
 const componentStyles = StyleSheet.create({
     header: {
@@ -25,6 +26,8 @@ const componentStyles = StyleSheet.create({
         flex: 1
     }
 });
+
+@autobind
 export default class CardHeader extends Component {
     render() {
         return (

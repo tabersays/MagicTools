@@ -1,14 +1,12 @@
 /**
  * Created by taber on 10/16/2016.
  */
-/**
- * Created by taber on 10/16/2016.
- */
 
 import React, {Component, PropTypes} from 'react';
 import {View, Text} from 'react-native';
 import CounterChanger from './CounterChanger';
 import constants from '../Constants';
+import autobind from 'autobind-decorator';
 
 const componentStyles = {
     secondaryCounters: {
@@ -27,6 +25,7 @@ const componentStyles = {
     }
 };
 
+@autobind
 export default class Player extends Component {
     renderPoisonCounter() {
         const {isPoisonShown, poisonDamage, changePoisonDamage} = this.props;

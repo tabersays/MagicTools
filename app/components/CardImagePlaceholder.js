@@ -5,6 +5,7 @@
 import React, {Component, PropTypes} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import constants from '../Constants';
+import autobind from 'autobind-decorator';
 
 const componentStyles = StyleSheet.create({
     image: {
@@ -20,6 +21,8 @@ const componentStyles = StyleSheet.create({
         backgroundColor: constants.white
     }
 });
+
+@autobind
 export default class CardImagePlaceholder extends Component {
     render() {
         return (

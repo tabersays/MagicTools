@@ -6,6 +6,8 @@ import {View, StyleSheet, TouchableOpacity, Text, Dimensions, LayoutAnimation, U
 import Icon from 'react-native-vector-icons/Ionicons';
 import constants from '../Constants';
 const {width} = Dimensions.get('window');
+import autobind from 'autobind-decorator';
+
 const componentStyle = StyleSheet.create({
     circle: {
         width: 50,
@@ -34,11 +36,12 @@ const componentStyle = StyleSheet.create({
         flex: 1
     }
 });
+
+@autobind
 export default class Settings extends Component {
     constructor() {
         super();
         UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
-        this.onMenuPress = this.onMenuPress.bind(this);
         this.state = {
             isMenu: false
         };

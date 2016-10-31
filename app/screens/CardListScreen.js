@@ -6,7 +6,8 @@ import React, {Component, PropTypes} from 'react';
 import {View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Dimensions} from 'react-native';
 import constants from '../Constants';
 const {width} = Dimensions.get('window');
-
+import Routes from '../Routes';
+import autobind from 'autobind-decorator';
 
 const componentStyles = StyleSheet.create({
     screen: {
@@ -37,12 +38,18 @@ const componentStyles = StyleSheet.create({
         width
     }
 });
+
+@autobind
 export default class CardListScreen extends Component {
     constructor() {
         super();
-        this.renderListItems = this.renderListItems.bind(this);
     }
-    onListItemPress() {
+    onListItemPress(cardIndex) {
+        const {navigator, cards} = this.props,
+            props = {
+                ...cards[cardIndex]
+            };
+        navigator.push(Routes.cardScreen(props));
     }
     renderListItems() {
         const {cards} = this.props;
@@ -50,7 +57,7 @@ export default class CardListScreen extends Component {
             <View key={index}
                   style={componentStyles.listItem}>
                 <TouchableOpacity style={componentStyles.cardItem}
-                                  onPress={() => this.onListItemPress()}>
+                                  onPress={() => this.onListItemPress(index)}>
                     <Text>{card.name}</Text>
                     <Image style={componentStyles.smallCard}
                            source={{
@@ -71,4 +78,7 @@ export default class CardListScreen extends Component {
     }
 }
 
-CardListScreen.propTypes = {};
+CardListScreen.propTypes = {
+    cards: PropTypes.array,
+    navigator: PropTypes.object
+};

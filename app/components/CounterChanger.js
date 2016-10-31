@@ -5,6 +5,7 @@ import React, {Component, PropTypes} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import CircleButton from '../components/CircleButton';
 import constants from '../Constants';
+import autobind from 'autobind-decorator';
 
 const componentStyles = StyleSheet.create({
     component: {
@@ -25,6 +26,8 @@ const componentStyles = StyleSheet.create({
         fontSize: 18
     }
 });
+
+@autobind
 export default class CounterChanger extends Component {
     render() {
         const {counter, minusPress, plusPress, color, textColor} = this.props;

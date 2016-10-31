@@ -9,6 +9,7 @@ import CardImagePlaceholder from './CardImagePlaceholder';
 import CardType from './CardType';
 import CardBody from './CardBody';
 import constants from '../Constants';
+import autobind from 'autobind-decorator';
 
 const componentStyle = StyleSheet.create({
     outerCard: {
@@ -18,11 +19,8 @@ const componentStyle = StyleSheet.create({
     }
 });
 
+@autobind
 export default class SearchCard extends Component {
-    constructor() {
-        super();
-        this.getBackgroundColor = this.getBackgroundColor.bind(this);
-    }
     getBackgroundColor() {
         const colors = {
             black: 'dimgrey',

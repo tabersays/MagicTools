@@ -7,6 +7,7 @@ import {View, StyleSheet} from 'react-native';
 import SettingsBar from '../components/SettingsBar';
 import Player from '../components/Player';
 import constants from '../Constants';
+import autobind from 'autobind-decorator';
 
 const componentStyle = StyleSheet.create({
     screen: {
@@ -33,18 +34,10 @@ const componentStyle = StyleSheet.create({
     }
 });
 
+@autobind
 export default class LifeScreen extends Component {
     constructor() {
         super();
-        this.onCommanderPress = this.onCommanderPress.bind(this);
-        this.onPoisonPress = this.onPoisonPress.bind(this);
-        this.onResetPress = this.onResetPress.bind(this);
-        this.changePlayer1CommanderDamage = this.changePlayer1CommanderDamage.bind(this);
-        this.changePlayer2CommanderDamage = this.changePlayer2CommanderDamage.bind(this);
-        this.changePlayer1Life = this.changePlayer1Life.bind(this);
-        this.changePlayer2Life = this.changePlayer2Life.bind(this);
-        this.changePlayer1PoisonDamage = this.changePlayer1PoisonDamage.bind(this);
-        this.changePlayer2PoisonDamage = this.changePlayer2PoisonDamage.bind(this);
 
         this.state = {
             player1Life: 20,

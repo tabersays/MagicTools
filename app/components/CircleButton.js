@@ -4,6 +4,7 @@
 import React, {Component, PropTypes} from 'react';
 import {TouchableOpacity, StyleSheet} from 'react-native';
 import constants from '../Constants';
+import autobind from 'autobind-decorator';
 
 const componentStyles = StyleSheet.create({
     circle: {
@@ -16,6 +17,7 @@ const componentStyles = StyleSheet.create({
     }
 });
 
+@autobind
 export default class CircleButton extends Component {
     render() {
         const {children, onPress, style} = this.props;

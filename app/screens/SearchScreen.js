@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Routes from '../Routes';
 import httpClient from '../lib/HttpClient';
 const {width} = Dimensions.get('window');
-
+import autobind from 'autobind-decorator';
 
 const componentStyle = StyleSheet.create({
     screen: {
@@ -39,11 +39,10 @@ const componentStyle = StyleSheet.create({
     }
 });
 
+@autobind
 export default class SearchScreen extends Component {
     constructor() {
         super();
-        this.onSearchPress = this.onSearchPress.bind(this);
-        this.renderSearchButton = this.renderSearchButton.bind(this);
         this.state = {
             colors: '',
             name: '',
@@ -62,7 +61,8 @@ export default class SearchScreen extends Component {
                 ...this.state,
                 isSearching: true
             });
-            httpClient.get(`https://api.magicthegathering.io/v1/cards`).then((response) => {
+            const url = `https://api.magicthegathering.io/v1/cards`;
+            httpClient.get(url).then((response) => {
                 this.setState({
                     ...this.state,
                     isSearching: false
