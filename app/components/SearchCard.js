@@ -22,22 +22,31 @@ const componentStyle = StyleSheet.create({
 @autobind
 export default class SearchCard extends Component {
     getBackgroundColor() {
-        const colors = {
-            black: 'dimgrey',
-            blue: 'lightblue',
-            red: 'orangered',
-            white: 'white',
-            green: 'lightgreen',
-            multicolor: 'lightgoldenrodyellow',
-            colorless: 'gainsboro'
-        };
-        return {backgroundColor: colors.colorless}
+        const borderColors = {
+                black: 'black',
+                blue: 'blue',
+                red: 'red',
+                white: 'white',
+                green: 'green',
+                multicolor: 'gold',
+                colorless: 'gainsboro'
+            },
+            {colors} = this.props;
+        let color;
+        if (!colors.length) {
+            color = 'colorless';
+        } else if (colors.length === 1) {
+            color = colors[0].toLowerCase();
+        } else {
+            color = 'multicolor'
+        }
+        return {backgroundColor: borderColors[color]}
     }
     render() {
-        const {style} = this.props;
+        const {style, onCardNameChange, colors, onColorsChange} = this.props;
         return (
             <View style={[componentStyle.outerCard, style, this.getBackgroundColor()]}>
-                <CardHeader/>
+                <CardHeader onCardNameChange={onCardNameChange} colors={colors} onColorsChange={onColorsChange}/>
                 <CardImagePlaceholder/>
                 <CardType/>
                 <CardBody/>
@@ -45,3 +54,9 @@ export default class SearchCard extends Component {
         );
     }
 }
+
+SearchCard.propTypes = {
+    onCardNameChange: PropTypes.func,
+    colors: PropTypes.array,
+    onColorsChange: PropTypes.func,
+};

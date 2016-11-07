@@ -44,7 +44,7 @@ export default class SearchScreen extends Component {
     constructor() {
         super();
         this.state = {
-            colors: '',
+            colors: [],
             name: '',
             supertype: '',
             type: '',
@@ -61,7 +61,8 @@ export default class SearchScreen extends Component {
                 ...this.state,
                 isSearching: true
             });
-            const url = `https://api.magicthegathering.io/v1/cards`;
+            const {name, colors} = this.state,
+                url = `https://api.magicthegathering.io/v1/cards?name=${name}&colors=${colors.join()}`;
             httpClient.get(url).then((response) => {
                 this.setState({
                     ...this.state,
@@ -79,7 +80,6 @@ export default class SearchScreen extends Component {
     }
     renderSearchButton() {
         const {isSearching} = this.state;
-        console.log(isSearching);
         if (isSearching) {
             return (
                 <CircleButton style={componentStyle.button}>
@@ -97,10 +97,27 @@ export default class SearchScreen extends Component {
             );
         }
     }
+    onCardNameChange(name) {
+        this.setState({
+            ...this.state,
+            name
+        });
+    }
+    onColorsChange(colors) {
+        this.setState({
+            ...this.state,
+            colors
+        })
+    }
     render() {
+        const {colors} = this.state;
         return (
             <View style={componentStyle.screen}>
-                <SearchCard style={componentStyle.card}/>
+                <SearchCard
+                    colors={colors}
+                    style={componentStyle.card}
+                    onColorsChange={this.onColorsChange}
+                    onCardNameChange={this.onCardNameChange}/>
                 {this.renderSearchButton()}
             </View>
         );
