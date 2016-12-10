@@ -1,53 +1,86 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React, {Component} from 'react';
+import {AppRegistry, StyleSheet, Navigator, Text, View, TouchableOpacity, BackAndroid} from 'react-native';
+import routes from './app/Routes';
+import constants from './app/Constants';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+const componentStyles = {
+    navigationBar: {
+        height: 56,
+        backgroundColor: constants.primary,
+    },
+    titleText: {
+        color: constants.white,
+        fontSize: 18
+    },
+    navWrapper: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    iconButton: {
+        color: constants.white,
+        fontSize: 30,
+        padding: 15
+    }
+};
 
 export default class MagicTools extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
+    componentWillMount() {
+        BackAndroid.addEventListener('hardwareBackPress', () => {
+            if (this.navigator && this.navigator.getCurrentRoutes().length > 1) {
+                this.navigator.pop();
+                return true;
+            }
+            return false;
+        });
+    }
+    componentWillUnmount() {
+        BackAndroid.removeEventListener('hardwareBackPress')
+    }
+    render() {
+        return (
+            <Navigator
+                ref={(ref) => this.navigator = ref}
+                initialRoute={routes.lifeScreen()}
+                renderScene={(route) => {
+                    return (<route.component {...route.props} navigator={this.navigator}/>);
+                }}
+                navigationBar={
+                    <Navigator.NavigationBar
+                        routeMapper={{
+                            LeftButton: (route, navigator, index) => {
+                                if (index === 0) {
+                                    return (
+                                        <TouchableOpacity style={componentStyles.navWrapper}
+                                            onPress={() => {
+                                                navigator.push(routes.searchScreen());
+                                            }}>
+                                            <Icon name="md-search" style={componentStyles.iconButton}/>
+                                        </TouchableOpacity>
+                                    );
+                                } else {
+                                    return (
+                                        <TouchableOpacity style={componentStyles.navWrapper}
+                                                          onPress={() => {
+                                                              navigator.pop();
+                                                          }}>
+                                            <Icon name="md-arrow-back" style={componentStyles.iconButton}/>
+                                        </TouchableOpacity>
+                                    );
+                                }
+                            },
+                            RightButton: ({rightButton}, navigator) => rightButton,
+                            Title: ({title}) => {
+                                return (
+                                    <View style={componentStyles.navWrapper}>
+                                        <Text style={componentStyles.titleText}>{title}</Text>
+                                    </View>
+                                );
+                            }
+                        }}
+                        style={componentStyles.navigationBar}/>
+                }/>
+        );
+    }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
 AppRegistry.registerComponent('MagicTools', () => MagicTools);
